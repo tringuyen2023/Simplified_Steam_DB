@@ -11,7 +11,7 @@ public class App {
 	private static final PrintStream out = System.out;
 	private static final String db_url = "jdbc:mysql://localhost:3306/steam";
     private static final String db_user = "root";
-    private static final String db_pw = "Mrnm123Mrnm123@";
+    private static final String db_pw = "";
 
 	public static void main(String[] args) {
 		try (Connection conn = DriverManager.getConnection(db_url, db_user, db_pw)) {
