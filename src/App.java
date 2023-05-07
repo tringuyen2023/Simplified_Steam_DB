@@ -18,27 +18,27 @@ public class App {
             displayMenu();
 			loop: while (true) {
 				switch (requestString("Selection (0 to quit, 9 for menu)? ")) {
-				case "0": // Quit
+				case "0": 
 					break loop;
 
-				case "1": // Reset
+				case "1": 
 					list_games(conn);
 					break;
 
-				case "2": // List students
-					list_users(conn);         // listStudents(conn) --> list_users(conn)
+				case "2": 
+					list_users(conn);         
 					break;
 
-				case "3": // Show transcript
-					show_libraries(conn);     // showTranscript(conn) --> show_libraries(conn)
+				case "3": 
+					show_libraries(conn);     
 					break;
 
-				case "4": // Add student
-					add_user(conn);         // addStudent(conn) --> add_user(conn)
+				case "4": 
+					add_user(conn);         
 					break;
 
-				case "5": // Add enrollment
-					add_game(conn);    // addEnrollment(conn) --> add_games(conn)
+				case "5": 
+					add_game(conn);    
 					break;
 				
 				case "6":
@@ -110,13 +110,11 @@ public class App {
 		query.append("SELECT * FROM Users");
 
 		try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query.toString())) {
-			// out.printf("%-3s %-10s %-4s %-8s\n", "Id", "Name", "Year", "Major");  // "%-3s %-10s %-4s %-8s\n" used to format the print
-			// out.println("----------------------------");
 			out.printf("%-3s %-15s %-30s %-20s %-8s\n", "ID", "Username", "Email", "DOB", "Country");
 			out.println("------------------------------------------------------------------");
-			
-			while (rs.next()) { // Iterate through each row 
-				int user_id = rs.getInt("user_id");				// get value of col 'sid'
+	
+			while (rs.next()) { 
+				int user_id = rs.getInt("user_id");
 				String username = rs.getString("username");
 				String email = rs.getString("email");
 				Date dob = rs.getDate("dob");
@@ -139,7 +137,7 @@ public class App {
 
 
 		try (PreparedStatement pstmt = conn.prepareStatement(query.toString())) {
-			pstmt.setString(1, user_id); // Set the ? part to what user input
+			pstmt.setString(1, user_id); 
 			ResultSet rs = pstmt.executeQuery();
 
 			out.printf("%-30s %-15s %-20s %-15s %-8s\n", "Title", "Genre", "Developer", "Play Time", "Date Purchased");
@@ -199,8 +197,7 @@ public class App {
             System.out.println("Invalid date format. Please enter your date of birth (yyyy-mm-dd): ");
             release_date = requestString("");
         }
-		//LocalDate ld_release = LocalDate.parse(str_release);
-        //Timestamp timestamp_release = Timestamp.valueOf(ld_release.atStartOfDay());
+	
         String price = requestString("Price? ");
         String genre = requestString("Genre? ");
 
